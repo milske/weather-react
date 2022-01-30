@@ -6,6 +6,16 @@ export default function App() {
   return (
     <div className="App">
       <Weather />
+      <footer className="link">
+        <a
+          href="https://github.com/milske/weather-react"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Open-source code{" "}
+        </a>
+        by Milla Nerg
+      </footer>
     </div>
   );
 }
