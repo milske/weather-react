@@ -3,7 +3,8 @@
   max-width: 600px;
 }
 
-.link {
+.App footer {
+  margin: 10px 0;
   text-align: center;
-  padding: 10px;
+  font-size: 14px;
 }

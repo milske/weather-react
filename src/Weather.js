@@ -22,6 +22,7 @@ export default function Weather() {
               type="search"
               autoComplete="off"
               className="form-control"
+              autoFocus="on"
             />
           </div>
           <div className="col-3">
