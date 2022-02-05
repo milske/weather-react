@@ -1,64 +1,80 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./Weather.css";
 
-export default function Weather() {
-  let weatherData = {
-    city: "Paris",
-    date: "Sunday 12:30",
-    description: "Cloudy",
-    imgUrl: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png",
-    humidity: 80,
-    wind: 30,
-    temperature: 19,
-  };
+export default function Weather(props) {
+  let [weatherData, setWeatherData] = useState({ ready: false });
+  function handleResponse(response) {
+    setWeatherData({
+      ready: true,
+      temperature: response.data.main.temp,
+      humidity: response.data.main.humidity,
+      wind: response.data.wind.speed,
+      city: response.data.name,
+      date: "Thursday 10.00",
+      description: response.data.weather[0].description,
+      iconUrl: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png",
+    });
+  }
 
-  return (
-    <div className="Weather">
-      <form>
+  if (weatherData.ready) {
+    return (
+      <div className="Weather">
+        <form>
+          <div className="row">
+            <div className="col-9">
+              <input
+                placeholder="Enter a city"
+                type="search"
+                autoComplete="off"
+                className="form-control"
+                autoFocus="on"
+              />
+            </div>
+            <div className="col-3">
+              <input
+                type="submit"
+                value="Search"
+                className="form-control btn btn-primary shadow-sm"
+              />
+            </div>
+          </div>
+        </form>
+        <br />
         <div className="row">
-          <div className="col-9">
-            <input
-              placeholder="Enter a city"
-              type="search"
-              autoComplete="off"
-              className="form-control"
-              autoFocus="on"
-            />
-          </div>
-          <div className="col-3">
-            <input
-              type="submit"
-              value="Search"
-              className="form-control btn btn-primary shadow-sm"
-            />
-          </div>
-        </div>
-      </form>
-      <br />
-      <div className="row">
-        <div className="col-6">
-          <div className="info">
-            <h1>
-              <div>{weatherData.city}</div>
-            </h1>
-            <div>
-              <strong className="temperature">{weatherData.temperature}</strong>
-              <span className="units"> °C </span>
-            </div>
-            <div className="details">
-              <div>Humidity: {weatherData.humidity}%</div>
-              <div>Wind: {weatherData.wind}Km/h</div>
+          <div className="col-6">
+            <div className="info">
+              <h1>
+                <div>{weatherData.city}</div>
+              </h1>
+              <div>
+                <strong className="temperature">
+                  {Math.round(weatherData.temperature)}
+                </strong>
+                <span className="units"> °C </span>
+              </div>
+              <div className="details">
+                <div>Humidity: {weatherData.humidity}%</div>
+                <div>Wind: {weatherData.wind}Km/h</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="col-6">
-          <div className="infos">
-            <div className="date">{weatherData.date}</div>
-            <div className="description"> {weatherData.description} </div>
-            <img src={weatherData.imgUrl} alt="weather-pic" />
+          <div className="col-6">
+            <div className="infos">
+              <div className="date">{weatherData.date}</div>
+              <div className="description"> {weatherData.description}</div>
+              <img src={weatherData.iconUrl} alt="weather-pic" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    let apiKey = "e9749c87f79d989e0dfa640ff0c29863";
+
+    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+
+    return "Loading...";
+  }
 }
