@@ -7,7 +7,7 @@ export default function App() {
   return (
     <div className="App">
       <div className="container">
-        <Weather defaultCity="Barcelona" />
+        <Weather defaultCity="New York" />
         <footer className="link">
           <a
             href="https://github.com/milske/weather-react"
