@@ -9,12 +9,21 @@ export default function App() {
       <div className="container">
         <Weather defaultCity="New York" />
         <footer className="link">
+          This project is{" "}
           <a
             href="https://github.com/milske/weather-react"
             target="_blank"
             rel="noreferrer"
           >
-            Open-source code{" "}
+            open-sourced on GitHub{" "}
+          </a>
+          and{" "}
+          <a
+            href="https://hungry-knuth-5c89b6.netlify.app"
+            target="_blank"
+            rel="noreferrer"
+          >
+            hosted on Netlify{" "}
           </a>
           by Milla Nerg
         </footer>
