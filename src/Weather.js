@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
 import "./Weather.css";
-import { scryRenderedComponentsWithType } from "react-dom/cjs/react-dom-test-utils.production.min";
 
 export default function Weather(props) {
   let [weatherData, setWeatherData] = useState({ ready: false });
