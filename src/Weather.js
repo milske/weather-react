@@ -18,14 +18,8 @@ export default function Weather(props) {
       city: response.data.name,
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
-      iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
     });
-  }
-
-  function search() {
-    let apiKey = "e9749c87f79d989e0dfa640ff0c29863";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
   }
 
   function handleSubmit(event) {
@@ -35,6 +29,12 @@ export default function Weather(props) {
 
   function handleChange(event) {
     setCity(event.target.value);
+  }
+
+  function search() {
+    let apiKey = "e9749c87f79d989e0dfa640ff0c29863";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
   }
 
   if (weatherData.ready) {
