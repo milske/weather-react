@@ -7,7 +7,6 @@
 
 .Weather .info {
   text-align: center;
-
   font-size: 25px;
   width: 100%;
   padding: 20px 10px;
@@ -15,7 +14,6 @@
 
 .Weather .infos {
   text-align: center;
-
   font-size: 23px;
   width: 100%;
   padding: 20px 10px;
@@ -27,22 +25,23 @@
 
 .Weather .details {
   font-size: 15px;
-  padding: 30px;
+  padding: 10px;
 }
 
 .Weather .description {
   text-transform: capitalize;
+  margin-bottom: 10px;
 }
 
 .Weather {
-  border-style: 60px;
-
-  border: opacity;
-  border-radius: 5px;
-  background: radial-gradient(
-    circle at -3.3% 48%,
-    rgb(141, 146, 239) 0%,
-    rgb(99, 229, 254) 90%
+  border-color: black;
+  border-width: 2px;
+  border: 1px solid;
+  border-radius: 10px;
+  background: linear-gradient(
+    -180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(0, 0, 0, 0.5) 100%
   );
 }
 
@@ -51,22 +50,4 @@
   padding: 50px 30px;
   text-align: center;
   font-weight: bolder;
-}
-
-.Weather .temperature-min {
-  opacity: 0.5;
-}
-
-.Weather .link {
-  text-align: center;
-  display: block;
-  font-family: "Courier New", Courier, monospace;
-}
-
-.Weather a {
-  text-decoration: none;
-}
-
-.Weather a:hover {
-  text-decoration: underline;
 }
